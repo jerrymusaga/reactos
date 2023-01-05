@@ -7,7 +7,7 @@ const ReactosContractAddress = "0xb7Bbde9357bC77710885E2d997C89bC467619508";
 
 const Feed = ({accounts, setAccounts}) => {
     const isConnected = Boolean(accounts[0]);
-    const [mint, setMint] = useState({});
+    const [mintMe, setMintMe] = useState({});
 
     async function mint(){
         if(window.ethereum){
@@ -28,7 +28,14 @@ const Feed = ({accounts, setAccounts}) => {
     }
 
     return (
-        <h1>Feed</h1>
+        <div>
+            {isConnected ? (
+            <p>Feed</p>
+        ): (
+            <h1>You must be connected</h1>
+        )}
+        </div>
+        
     )
 }
 
