@@ -28,6 +28,14 @@ function App() {
     setProfiles(profiles);
   }
 
+  async function getPosts(){
+    const response = await urlClient.query(queryExplorePublications).toPromise();
+    const posts = response.data.explorePublications.items.filter((post) => {
+      if (post.profile) return post;
+      return "";
+    })
+  }
+
   return (
     <div className='overlay'>
       <div className="App">
