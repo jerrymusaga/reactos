@@ -11,7 +11,9 @@ import Navigation from './components/navigation/Navigation';
 function App() {
   const [accounts, setAccounts] = useState(null);
   const [profiles, setProfiles] = useState([]);
+  console.log(`profiles:- ${profiles}`)
   const [posts, setPosts] = useState([]);
+  console.log(`posts:- ${posts}`)
 
   async function connectAccount () {
     if(window.ethereum){
@@ -51,9 +53,67 @@ function App() {
 
   return (
     <div className='app'>
-      <Box>
-        
+      <Box width="100%" backgroundColor="rgba(5,32,64,28)">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="55%"
+          margin="auto"
+          color="white"
+          padding="10px 0"  
+        >
+          <Box>
+            <Box fontSize="45px" fontFamily="DM Serif Display">
+              Reactos
+            </Box>
+          </Box>
+
+          {accounts ? (
+            <Box backgroundColor="000" padding="15px" borderRadius="6px">
+              Connected
+            </Box>
+          ) : (
+            <Button onClick={connectAccount} color="rgba(5,32,64)" _hover={{backgroundColor:"#808080"}}>
+              Connect Wallet
+            </Button>
+          )}
+
+        </Box>
+
       </Box>
+
+      {/*FEED SECTION */}
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        width="55%"
+        margin="35% auto auto auto"
+        color="white"
+      >
+        {/* POSTS */}
+        <Box width="65%" maxWidth="65%" minWidth="65%">
+            {
+              posts.map((post) => (
+                <Box key={post.id} marginBottom="25px" backgroundColor="rgba(5,32,64,28)" padding="40px 30px 40px 25px" borderRadius="6px">
+                  <Box display="flex">
+                    {/*Profile image */}
+                    <Box width="75px" height="75px" marginTop="8px">
+                      <img
+                        alt="profile"
+                        src=""
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+              ))
+            }
+        </Box>
+
+        {/*Friend Suggestions */}
+        <Box></Box>
+      </Box>
+
     </div>
     
   );
