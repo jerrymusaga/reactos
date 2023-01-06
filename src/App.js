@@ -44,15 +44,16 @@ function App() {
     await tx.wait();
   }
 
-  return (
-    <div className='overlay'>
-      <div className="App">
-        <Navigation accounts={accounts} setAccounts={setAccounts} />
-        <Feed accounts={accounts} setAccounts={setAccounts} /> 
-      </div>
-      <div className='moving-background'>
+  useEffect(() => {
+    getRecommendedProfiles();
+    getPosts();
+  }, []);
 
-      </div>
+  return (
+    <div className='app'>
+      <Box>
+        
+      </Box>
     </div>
     
   );
