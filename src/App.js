@@ -60,6 +60,7 @@ function App() {
       }
       return url;
     }
+    return "/default-avatar.png"
   }
 
   return (
@@ -112,7 +113,7 @@ function App() {
                     <Box width="75px" height="75px" marginTop="8px">
                       <img
                         alt="profile"
-                        src={post.profile ? post.profile.picture?.original.url : "/default-avatar.png"}
+                        src={parseImageUrl(post)}
                         width="75px" 
                         height="75px"
                         onError={({currentTarget}) => {
